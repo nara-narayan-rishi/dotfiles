@@ -1,0 +1,137 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'Lokaltog/powerline' "  statuslines and prompts 
+Plugin 'scrooloose/syntastic' " Linting
+Plugin 'Valloric/YouCompleteMe' " AutoComplete
+Plugin 'pangloss/vim-javascript' " indentation and syntax 
+Plugin 'moll/vim-node' " Node Shortcuts
+"Plugin 'html5-syntax' "Syntax
+"Plugin 'othree/html5'  " omnicomplete function, indent and syntax
+Plugin 'elzr/vim-json' " Json Highliter
+"Plugin 'othree/javascript-libraries-syntax'
+Plugin 'Raimondi/delimitMate' " Closes brackets
+Plugin 'nathanaelkane/vim-indent-guides'  " Visually display indenting
+Plugin 'scrooloose/nerdcommenter' " Comment blocks for any language
+
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+"  ---------------------------------------------------------------------------
+"  "  "  Default tabs settings
+"  "  "
+"  ---------------------------------------------------------------------------
+"
+"  set shiftwidth=2
+"  set tabstop=2
+"  set expandtab
+"  set autoindent " indent when moving to the next line while writing code
+"
+"
+
+syntax enable           " enable syntax processing
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=2
+" when indenting with '>', use 4 spaces width
+set shiftwidth=2
+" On pressing tab, insert 4 spaces
+set expandtab       " tabs are spaces
+set number              " show line numbers
+set showcmd             " show command in bottom bar
+set cursorline          " highlight current line
+filetype indent on      " load filetype-specific indent files
+set wildmenu            " visual autocomplete for command menu
+set showmatch           " highlight matching [{()}]
+let NERDTreeShowHidden=1  " show hidden files in nerdtree
+set backspace=indent,eol,start  " enables baackspace in insert mode
+set clipboard=unnamed  " enables global clipboard
+set autoindent                        " indent when creating newline
+
+" Refer also to formatoptions+=o (copy comment indent to newline)
+set nocopyindent
+
+" Try not to change the indent structure on "<<" and ">>" commands. I.e. keep
+" block comments aligned with space if there is a space there.
+set nopreserveindent
+
+" Smart detect when in braces and parens. Has annoying side effect that it
+" won't indent lines beginning with '#'. Relying on syntax indentexpr instead.
+" 'smartindent' in general is a piece of garbage, never turn it on.
+set nosmartindent
+
+
+"  ---------------------------------------------------------------------------
+"  "  "  Shortcuts
+"  "  "
+"  ---------------------------------------------------------------------------
+  "
+  " SplitLayout navigations
+  nnoremap <C-H> <C-W><C-H>
+  nnoremap <C-J> <C-W><C-J>
+  nnoremap <C-K> <C-W><C-K>
+  nnoremap <C-L> <C-W><C-L>
+
+  " Typing
+  nnoremap <F4> :NERDTreeToggle 
+  "nnoremap <SPACE> za " Enable folding with the spacebar
+
+  " enable/disable highlighting quickly
+  noremap <F3> :set hlsearch! hlsearch?<CR> 
+
+  " Comment out a blog
+  vnoremap <silent> # :s/^/#/<cr>:noh<cr>
+  vnoremap <silent> -# :s/^#//<cr>:noh<cr>
+
+  " Toggle Indent Guide
+  nnoremap <C-I> :IndentGuidesToggle
+
+  let mapleader="," " Set Leader key to ,
+  
+  let g:ctrlp_working_path_mode = 'rw' " Current working path
+
+
+  " Set nopaste and paste
+  " set pastetoggle=<F2>
+  " enable/disable highlighting quickly
+  "noremap <F3> :set hlsearch! hlsearch?<CR>
+  "set go+=a               " Visual selection automatically copied to the clipboard
+  "set paste  " Disable automatic comment insertion
+  "let NERDTreeShowBookmarks=1 " Display NERDTree Bookmarks
+  "let g:NERDTreeChDirMode = 2 " Current working path
+  
+
+"  "
+"  ---------------------------------------------------------------------------
+"  "  "  Colour Schemes
+"  "  "
+"  ---------------------------------------------------------------------------
+  "
+  syntax enable
+  set background=dark
+  " solarized options 
+  let g:solarized_visibility = "high"
+  let g:solarized_contrast = "high"
+  let g:solarized_termcolors=256
+  colorscheme solarized
+  set cursorline          " highlight current line
+
+  " Colours for Indent Guide
+  let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=8
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=9
