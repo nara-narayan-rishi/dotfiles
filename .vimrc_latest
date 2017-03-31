@@ -94,10 +94,6 @@ set nosmartindent
   " enable/disable highlighting quickly
   noremap <F3> :set hlsearch! hlsearch?<CR> 
 
-  " Comment out a blog
-  vnoremap <silent> # :s/^/#/<cr>:noh<cr>
-  vnoremap <silent> -# :s/^#//<cr>:noh<cr>
-
   " Toggle Indent Guide
   nnoremap <C-I> :IndentGuidesToggle
 
