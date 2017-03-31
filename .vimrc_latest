@@ -5,7 +5,6 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -17,15 +16,12 @@ Plugin 'scrooloose/syntastic' " Linting
 Plugin 'Valloric/YouCompleteMe' " AutoComplete
 Plugin 'pangloss/vim-javascript' " indentation and syntax 
 Plugin 'moll/vim-node' " Node Shortcuts
-"Plugin 'html5-syntax' "Syntax
-"Plugin 'othree/html5'  " omnicomplete function, indent and syntax
 Plugin 'elzr/vim-json' " Json Highliter
-"Plugin 'othree/javascript-libraries-syntax'
 Plugin 'Raimondi/delimitMate' " Closes brackets
 Plugin 'nathanaelkane/vim-indent-guides'  " Visually display indenting
 Plugin 'scrooloose/nerdcommenter' " Comment blocks for any language
-
-
+Plugin 'othree/javascript-libraries-syntax.vim' " Syntax support for all other languages
+Plugin 'christoomey/vim-tmux-navigator' " Tmux navigator
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -36,12 +32,6 @@ filetype plugin indent on    " required
 "  "  "  Default tabs settings
 "  "  "
 "  ---------------------------------------------------------------------------
-"
-"  set shiftwidth=2
-"  set tabstop=2
-"  set expandtab
-"  set autoindent " indent when moving to the next line while writing code
-"
 "
 
 syntax enable           " enable syntax processing
