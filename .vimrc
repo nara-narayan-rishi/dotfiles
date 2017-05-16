@@ -22,6 +22,8 @@ Plugin 'nathanaelkane/vim-indent-guides'  " Visually display indenting
 Plugin 'scrooloose/nerdcommenter' " Comment blocks for any language
 Plugin 'othree/javascript-libraries-syntax.vim' " Syntax support for all other languages
 Plugin 'christoomey/vim-tmux-navigator' " Tmux navigator
+Plugin 'ekalinin/Dockerfile.vim' " Docker syntax
+"Plugin 'powerline/powerline' "vim status bar
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -90,7 +92,14 @@ set nosmartindent
   let mapleader="," " Set Leader key to ,
   
   let g:ctrlp_working_path_mode = 'rw' " Current working path
+  let NERDTreeShowBookmarks=1 " Display NERDTree Bookmarks
 
+  "NERDTree filter out file extentions
+  let NERDTreeIgnore = ['\.swo$', '\.swp$']
+
+  "set pastetoggle=<F2>
+
+  "let g:NERDTreeChDirMode = 2 " Current working path
 
   " Set nopaste and paste
   " set pastetoggle=<F2>
@@ -98,8 +107,6 @@ set nosmartindent
   "noremap <F3> :set hlsearch! hlsearch?<CR>
   "set go+=a               " Visual selection automatically copied to the clipboard
   "set paste  " Disable automatic comment insertion
-  "let NERDTreeShowBookmarks=1 " Display NERDTree Bookmarks
-  "let g:NERDTreeChDirMode = 2 " Current working path
   
 
 "  "
