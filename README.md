@@ -1,4 +1,6 @@
 # dotfiles
+### Tmux and Vim Preview
+![preview](/vim-tmux-preview.png)
 
 ### Tmux Requirements
 * Tmux requires the following for battery to work in status line
