@@ -7,11 +7,10 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'Lokaltog/powerline' "  statuslines and prompts 
+Plugin 'VundleVim/Vundle.vim' " Plugin manager
+Plugin 'scrooloose/nerdtree' " IDE Like File browser
+Plugin 'kien/ctrlp.vim' " Filesearch 
+Plugin 'flazz/vim-colorschemes' " vim colour themes
 Plugin 'scrooloose/syntastic' " Linting
 Plugin 'Valloric/YouCompleteMe' " AutoComplete
 Plugin 'pangloss/vim-javascript' " indentation and syntax 
@@ -23,12 +22,16 @@ Plugin 'scrooloose/nerdcommenter' " Comment blocks for any language
 Plugin 'othree/javascript-libraries-syntax.vim' " Syntax support for all other languages
 Plugin 'christoomey/vim-tmux-navigator' " Tmux navigator
 Plugin 'ekalinin/Dockerfile.vim' " Docker syntax
-"Plugin 'powerline/powerline' "vim status bar
+Plugin 'evanmiller/nginx-vim-syntax' " Nginx syntax
+Plugin 'leafgarland/typescript-vim' " Typescript syntax
+"Plugin 'maksimr/vim-jsbeautify' " Format JS HTML CSS #Must install 
+Plugin 'vim-airline/vim-airline' " Lightweight powerline (Kiff status bar)
+Plugin 'vim-airline/vim-airline-themes' " Themes
+Plugin 'tpope/vim-fugitive' " Git commands in vim
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-
 
 "  ---------------------------------------------------------------------------
 "  "  "  Default tabs settings
@@ -40,9 +43,9 @@ syntax enable           " enable syntax processing
 filetype plugin indent on
 " show existing tab with 4 spaces width
 set tabstop=2
-" when indenting with '>', use 4 spaces width
+" when indenting with '>', use spaces width
 set shiftwidth=2
-" On pressing tab, insert 4 spaces
+" On pressing tab, insert spaces
 set expandtab       " tabs are spaces
 set number              " show line numbers
 set showcmd             " show command in bottom bar
@@ -55,7 +58,9 @@ set backspace=indent,eol,start  " enables baackspace in insert mode
 set clipboard=unnamedplus  " enables global clipboard (Requires gvim installed)
 set autoindent                        " indent when creating newline
 set mouse=a " enable tmux mouse scrolling in vim
-
+let g:syntastic_javascript_checkers = ['jshint'] "Enable linting with jshint
+au BufRead,BufNewFile *.conf set ft=nginx "Enable nginx syntax"
+set laststatus=2  " always show status bar
 
 " Refer also to formatoptions+=o (copy comment indent to newline)
 set nocopyindent
@@ -75,17 +80,27 @@ augroup auto_comment
           au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
         augroup END
 
-" Automatically set paste mode
-let &t_SI .= "\<Esc>[?2004h"
-let &t_EI .= "\<Esc>[?2004l"
+      
+"
+"  ---------------------------------------------------------------------------
+"  "  "  Airline
+"  "  "
+"  ---------------------------------------------------------------------------
+"
 
-inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='dark'
+let g:airline_powerline_fonts = 1
+" enable/disable syntastic integration >
+let g:airline#extensions#syntastic#enabled = 1
+ 
+" enable/disable fugitive/lawrencium integration 
+let g:airline#extensions#branch#enabled = 1
+" to only show the tail, e.g. a branch 'feature/foo' becomes 'foo', use
+let g:airline#extensions#branch#format = 1
 
-function! XTermPasteBegin()
-    set pastetoggle=<Esc>[201~
-      set paste
-        return "
-      endfunction"]]]]"
+" enable/disable YCM integration
+let g:airline#extensions#ycm#enabled = 1
 
 
 "  ---------------------------------------------------------------------------
@@ -117,7 +132,6 @@ function! XTermPasteBegin()
   "NERDTree filter out file extentions
   let NERDTreeIgnore = ['\.swo$', '\.swp$']
 
-  "set pastetoggle=<F2>
 
   "let g:NERDTreeChDirMode = 2 " Current working path
 
@@ -147,4 +161,4 @@ function! XTermPasteBegin()
   " Colours for Indent Guide
   let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=8
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=9
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=8
