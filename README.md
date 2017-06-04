@@ -11,3 +11,6 @@
 **Commands**  
 `~/bin/battery Charging`  
 `~/bin/battery Discharging` 
+
+### Vim Requirements    
+`cp lambda-mod-infinite.zsh-theme ~/.oh-my-zsh/custom/themes/lambda-mod-infinite.zsh-theme` 
