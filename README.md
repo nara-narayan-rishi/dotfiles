@@ -1,4 +1,7 @@
 # dotfiles
+
+* Mac dotfiles are outdated
+
 ### Tmux and Vim Preview
 ![preview](/vim-tmux-preview.png)
 
