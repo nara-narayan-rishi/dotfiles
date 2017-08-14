@@ -1,14 +1,17 @@
 #!/bin/bash
 clear
 
-if [ $(uname -s) == "Linux" ]
-then
-    echo "Using Linux dot files"
-    DOTFILES=$HOME/.dotfiles/linux/
-else
-    echo "Using Mac dot files"
+if [ "$(uname)" == "Darwin" ]; then
+    echo "Using Mac dotfiles"
     DOTFILES=$HOME/.dotfiles/mac/
+  elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    echo "Using Linux dotfiles"
+    DOTFILES=$HOME/.dotfiles/linux/
+  else
+    echo "Error detecting OS, Using Linux dotfiles"
+    DOTFILES=$HOME/.dotfiles/linux/
 fi
+
 
 echo -e "\ncreating symlinks\n"
 orig=".orig"
